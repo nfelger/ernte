@@ -24,26 +24,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup export directories
-        run: mkdir -p exports/web ~/.local/share/godot/export_templates/4.3.stable
-
-      - name: Link export templates
+      - name: Setup
         run: |
-          # barichello/godot-ci stores templates here
-          mv /root/.local/share/godot/export_templates/4.3.stable/* \
-             ~/.local/share/godot/export_templates/4.3.stable/ 2>/dev/null || true
-          # Some image versions use a different path
-          if [ -d /root/.local/share/godot/templates/4.3.stable ]; then
-            cp -r /root/.local/share/godot/templates/4.3.stable/* \
-               ~/.local/share/godot/export_templates/4.3.stable/ 2>/dev/null || true
-          fi
+          mkdir -p exports/web
+          # Verify export templates are where Godot expects them
+          echo "--- Template locations ---"
+          find /root/.local/share/godot -name "*.wasm" -o -name "web*" 2>/dev/null | head -20 || true
+          ls -la /root/.local/share/godot/export_templates/ 2>/dev/null || true
+          ls /root/.local/share/godot/export_templates/4.3.stable/ 2>/dev/null || echo "No 4.3.stable dir"
+          echo "--- Godot version ---"
+          godot --version 2>/dev/null || true
 
       - name: Import project
         run: godot --headless --import 2>&1 || true
         timeout-minutes: 2
 
       - name: Export to Web
-        run: godot --headless --export-release "Web" exports/web/index.html
+        run: godot --headless --verbose --export-release "Web" exports/web/index.html 2>&1
         timeout-minutes: 5
 
       - name: Add cross-origin isolation headers
