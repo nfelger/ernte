@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="12" fill="#2d4a1e"/>
+  <rect x="12" y="60" width="46" height="32" rx="3" fill="#4a7c2f"/>
+  <rect x="64" y="60" width="52" height="32" rx="3" fill="#3a6a22"/>
+  <rect x="12" y="36" width="104" height="20" rx="3" fill="#5a8c3a"/>
+  <text x="64" y="114" font-size="14" font-family="monospace" text-anchor="middle" fill="#c8a84b">ERNTE</text>
+</svg>
