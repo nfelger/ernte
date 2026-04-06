@@ -34,8 +34,10 @@ jobs:
           cp /root/.local/share/godot/export_templates/4.3.stable/* \
              "$HOME/.local/share/godot/export_templates/4.3.stable/"
           echo "HOME=$HOME"
-          echo "--- Templates copied ---"
-          ls -la "$HOME/.local/share/godot/export_templates/4.3.stable/" | grep -i web
+          echo "--- Templates available ---"
+          ls "$HOME/.local/share/godot/export_templates/4.3.stable/"
+          echo "--- export_presets.cfg ---"
+          cat export_presets.cfg
 
       - name: Import project
         run: godot --headless --import 2>&1 || true
