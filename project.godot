@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; but the engine accepts it as well.
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Ernte"
+config/description="Familienlandhof-Simulation – Prototyp"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.3", "Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+; Load order matters: each singleton can reference those above it.
+GameState="*res://scripts/core/game_state.gd"
+RulesEngine="*res://scripts/core/rules_engine.gd"
+DataLoader="*res://scripts/core/data_loader.gd"
+TurnManager="*res://scripts/core/turn_manager.gd"
+
+[display]
+
+; Portrait 480×854 — close to a typical phone screen.
+; canvas_items + expand: UI scales to fill screen while preserving aspect.
+window/size/viewport_width=480
+window/size/viewport_height=854
+window/size/resizable=true
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation="portrait"
+
+[input_devices]
+
+; Allow mouse clicks to simulate touches in editor/desktop browser.
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+; Compatibility renderer: best performance on mobile web / WebGL.
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

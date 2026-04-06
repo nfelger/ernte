@@ -1,0 +1,55 @@
+[
+  {
+    "id": "winter_wheat",
+    "name": "Winterweizen",
+    "description": "Der verlässliche Klassiker. Im Herbst säen, im Sommer ernten. Niedriger Preis, aber stabile Nachfrage.",
+    "plant_seasons": ["Herbst"],
+    "grow_months": 8,
+    "seed_cost": 720.0,
+    "base_yield_kg_per_ha": 7200.0,
+    "base_price": 0.22,
+    "winter_hardy": true,
+    "reputation_on_harvest": 1.0,
+    "notes": "Bread wheat, dominant crop in the district."
+  },
+  {
+    "id": "sugar_beet",
+    "name": "Zuckerrübe",
+    "description": "Hohe Erträge, aber anspruchsvoll. Beansprucht den Boden stark. Vertragsanbau mit der Zuckerfabrik.",
+    "plant_seasons": ["Frühling"],
+    "grow_months": 6,
+    "seed_cost": 1400.0,
+    "base_yield_kg_per_ha": 65000.0,
+    "base_price": 0.034,
+    "winter_hardy": false,
+    "reputation_on_harvest": 1.5,
+    "notes": "Very high bulk yield; price is per kg of beet, not sugar."
+  },
+  {
+    "id": "rapeseed",
+    "name": "Raps",
+    "description": "Ölsaat mit schwankenden Preisen. Blüht gelb, was die Nachbarn aus der Stadt erfreut.",
+    "plant_seasons": ["Herbst"],
+    "grow_months": 9,
+    "seed_cost": 580.0,
+    "base_yield_kg_per_ha": 3800.0,
+    "base_price": 0.46,
+    "winter_hardy": true,
+    "reputation_on_harvest": 1.2,
+    "notes": "Oilseed crop. Price-volatile, good rotation partner with wheat."
+  },
+  {
+    "id": "clover_ley",
+    "name": "Kleegras",
+    "description": "Keine direkte Einnahme. Regeneriert den Boden erheblich. Gilt im Dorf als Zeichen guter Betriebsführung.",
+    "plant_seasons": ["Frühling", "Sommer"],
+    "grow_months": 12,
+    "seed_cost": 190.0,
+    "base_yield_kg_per_ha": 0.0,
+    "base_price": 0.0,
+    "winter_hardy": true,
+    "reputation_on_harvest": 2.0,
+    "land_health_bonus": 12.0,
+    "notes": "Fertility restoration. No revenue but improves long-term yield."
+  }
+]

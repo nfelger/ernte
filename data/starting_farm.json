@@ -1,0 +1,74 @@
+{
+  "time": {
+    "start_year": 2024,
+    "year": 1,
+    "month": 3
+  },
+  "resources": {
+    "capital": 50000.0,
+    "land_health": 58.0,
+    "reputation": 38.0
+  },
+  "fields": [
+    {
+      "id": 0,
+      "name": "Feld 1",
+      "size_ha": 4.5,
+      "planted_crop": "",
+      "status": "fallow",
+      "months_grown": 0,
+      "health_modifier": 1.0,
+      "notes": "Sandiger Lehm. Zuverlässig, aber unspektakulär. Drainiert gut."
+    },
+    {
+      "id": 1,
+      "name": "Feld 2",
+      "size_ha": 6.2,
+      "planted_crop": "winter_wheat",
+      "status": "growing",
+      "months_grown": 5,
+      "health_modifier": 0.88,
+      "notes": "Immer nur Weizen hier. Der Boden zeigt es. Leicht verdichtet."
+    },
+    {
+      "id": 2,
+      "name": "Feld 3",
+      "size_ha": 3.1,
+      "planted_crop": "",
+      "status": "fallow",
+      "months_grown": 0,
+      "health_modifier": 0.78,
+      "notes": "Niedriger pH-Wert. Kalkung empfohlen laut letzter Bodenanalyse."
+    },
+    {
+      "id": 3,
+      "name": "Feld 4",
+      "size_ha": 5.3,
+      "planted_crop": "rapeseed",
+      "status": "growing",
+      "months_grown": 3,
+      "health_modifier": 1.08,
+      "notes": "Bestes Feld am Hof. Erhöhte Lage, drainiert hervorragend."
+    },
+    {
+      "id": 4,
+      "name": "Feld 5",
+      "size_ha": 4.9,
+      "planted_crop": "",
+      "status": "fallow",
+      "months_grown": 0,
+      "health_modifier": 0.94,
+      "notes": "Frisch umgebrochen nach Rübenanbau. Erholt sich noch."
+    },
+    {
+      "id": 5,
+      "name": "Feld 6",
+      "size_ha": 2.7,
+      "planted_crop": "",
+      "status": "fallow",
+      "months_grown": 0,
+      "health_modifier": 0.82,
+      "notes": "Klein und etwas schwierig zu bearbeiten. Liegt an der Kreisstraße."
+    }
+  ]
+}

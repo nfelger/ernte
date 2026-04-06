@@ -1,0 +1,98 @@
+[
+  {
+    "id": "late_frost",
+    "title": "Spätfrost",
+    "text": "Ein ungewöhnlicher Frost Ende April hat frühe Saaten geschädigt. Das Landratsamt gibt eine Schadensmeldung heraus. Ihr Feld 3 war besonders exponiert.",
+    "trigger_seasons": ["Frühling"],
+    "effects": { "land_health": -6, "capital": -400 },
+    "tags": ["wetter"]
+  },
+  {
+    "id": "eu_direct_payment",
+    "title": "EU-Direktzahlung",
+    "text": "Die vierteljährliche EU-Direktzahlung ist eingegangen. Sie haben die entsprechenden Formulare vor acht Wochen ausgefüllt. Die Formulare verlangten weitere Formulare. Das Geld ist nun da.",
+    "trigger_seasons": ["Frühling", "Sommer"],
+    "effects": { "capital": 3800 },
+    "tags": ["verwaltung"]
+  },
+  {
+    "id": "neighbour_sells",
+    "title": "Nachbar verkauft",
+    "text": "Familie Hofmann gibt auf. Ihre 38 Hektar kommen im nächsten Quartal zur Versteigerung. Das Amt schickt Ihnen unaufgefordert ein Informationsblatt über landwirtschaftliche Flächenerwerb. Sie legen es beiseite.",
+    "trigger_seasons": ["Frühling", "Herbst", "Winter"],
+    "effects": {},
+    "tags": ["erzählung"]
+  },
+  {
+    "id": "summer_drought",
+    "title": "Trockenheitswarnung",
+    "text": "Der Deutsche Wetterdienst gibt eine Trockenheitswarnung heraus. Grundwasserspiegel im Kreis auf Zehnjahrestief. Ihre sandigen Felder zeigen sichtbare Stresssymptome.",
+    "trigger_seasons": ["Sommer"],
+    "effects": { "land_health": -9 },
+    "tags": ["wetter"]
+  },
+  {
+    "id": "machinery_breakdown",
+    "title": "Schlepper kaputt",
+    "text": "Der alte Fendt startet nicht mehr. Ein Mechaniker aus der Kreisstadt kommt zwei Tage später als vereinbart, repariert zunächst das Falsche und stellt entsprechend in Rechnung.",
+    "trigger_seasons": ["Frühling", "Herbst"],
+    "effects": { "capital": -1900 },
+    "tags": ["betrieb"]
+  },
+  {
+    "id": "organic_inquiry",
+    "title": "Biosupermarkt schreibt an",
+    "text": "Eine regionale Bio-Supermarktkette sucht Direktlieferanten. Ihr Betrieb ist nicht zertifiziert. Die Kette schickt dennoch einen Prospekt. Ihr Name ist jetzt in deren Datenbank.",
+    "trigger_seasons": ["Frühling"],
+    "effects": { "reputation": 4 },
+    "tags": ["markt", "erzählung"]
+  },
+  {
+    "id": "soil_test_results",
+    "title": "Bodenanalyse",
+    "text": "Die Ergebnisse der Bodenproben vom letzten Quartal: pH auf Feld 3 zu niedrig, Phosphor im gesamten Betrieb ausreichend, Verdichtung in den östlichen Schlägen nachgewiesen. Eine Empfehlung zur Kalkung liegt bei.",
+    "trigger_seasons": ["Winter", "Frühling"],
+    "effects": { "land_health": 2 },
+    "tags": ["betrieb"]
+  },
+  {
+    "id": "regional_good_harvest",
+    "title": "Gute Ernte im Kreis",
+    "text": "Die Kreiszeitung berichtet von einer überdurchschnittlichen Ernte im gesamten Landkreis. Die Genossenschaft meldet Rekordmengen. Die Erzeugerpreise reagieren entsprechend nach unten.",
+    "trigger_seasons": ["Sommer", "Herbst"],
+    "effects": { "capital": 150 },
+    "tags": ["markt"]
+  },
+  {
+    "id": "storm_damage",
+    "title": "Unwetter",
+    "text": "Ein Sturm hat die Getreidebestände auf den offenen Schlägen gelagert. Teile der Ernte sind gefährdet. Der Versicherungsvertreter kündigt einen Besichtigungstermin für nächste Woche an.",
+    "trigger_seasons": ["Sommer"],
+    "effects": { "land_health": -4, "capital": -600 },
+    "tags": ["wetter"]
+  },
+  {
+    "id": "farm_visit_school",
+    "title": "Schulklasse zu Besuch",
+    "text": "Eine Klasse der Grundschule Mittelbach besichtigt den Hof. Die Kinder interessieren sich besonders für den Traktor und fragen, warum Raps gelb ist. Ihre Antwort ist korrekt. Niemand hört zu.",
+    "trigger_seasons": ["Frühling", "Sommer"],
+    "effects": { "reputation": 3 },
+    "tags": ["erzählung"]
+  },
+  {
+    "id": "input_price_rise",
+    "title": "Düngerpreise steigen",
+    "text": "Die Großhandelspreise für Stickstoffdünger sind aufgrund von Energiepreisschwankungen um 18 Prozent gestiegen. Ihr Händler hat bereits vorgewarnt. Es hilft nichts.",
+    "trigger_seasons": ["Winter", "Frühling"],
+    "effects": { "capital": -750 },
+    "tags": ["markt"]
+  },
+  {
+    "id": "exceptional_yield",
+    "title": "Ausnahmeertrag",
+    "text": "Ideale Witterungsbedingungen in diesem Sommer haben zu einem überdurchschnittlichen Ertrag geführt. Das Konto des Genossenschaftslagers weist einen erfreulichen Stand aus.",
+    "trigger_seasons": ["Sommer"],
+    "effects": { "capital": 2200, "reputation": 2 },
+    "tags": ["wetter", "markt"]
+  }
+]
