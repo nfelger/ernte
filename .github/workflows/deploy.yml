@@ -1,0 +1,91 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  export-and-deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup export directories
+        run: mkdir -p exports/web ~/.local/share/godot/export_templates/4.3.stable
+
+      - name: Link export templates
+        run: |
+          # barichello/godot-ci stores templates here
+          mv /root/.local/share/godot/export_templates/4.3.stable/* \
+             ~/.local/share/godot/export_templates/4.3.stable/ 2>/dev/null || true
+          # Some image versions use a different path
+          if [ -d /root/.local/share/godot/templates/4.3.stable ]; then
+            cp -r /root/.local/share/godot/templates/4.3.stable/* \
+               ~/.local/share/godot/export_templates/4.3.stable/ 2>/dev/null || true
+          fi
+
+      - name: Import project
+        run: godot --headless --import 2>&1 || true
+        timeout-minutes: 2
+
+      - name: Export to Web
+        run: godot --headless --export-release "Web" exports/web/index.html
+        timeout-minutes: 5
+
+      - name: Add cross-origin isolation headers
+        run: |
+          # GitHub Pages cannot set response headers, so we use a service worker
+          # to add the COOP/COEP headers required for SharedArrayBuffer.
+          cat > exports/web/coi-serviceworker.js << 'SWEOF'
+          /*! coi-serviceworker v0.1.7 - Guido Zuidhof, licensed under MIT */
+          if(typeof window==='undefined'){
+            self.addEventListener("install",()=>self.skipWaiting());
+            self.addEventListener("activate",(e)=>e.waitUntil(self.clients.claim()));
+            self.addEventListener("fetch",(e)=>{
+              if(e.request.cache==="only-if-cached"&&e.request.mode!=="same-origin")return;
+              e.respondWith(fetch(e.request).then((r)=>{
+                if(r.status===0)return r;
+                const h=new Headers(r.headers);
+                h.set("Cross-Origin-Embedder-Policy","require-corp");
+                h.set("Cross-Origin-Opener-Policy","same-origin");
+                return new Response(r.body,{status:r.status,statusText:r.statusText,headers:h});
+              }).catch((err)=>console.error(err)));
+            });
+          }else{
+            (async()=>{
+              if(window.crossOriginIsolated!==false)return;
+              const r=await navigator.serviceWorker.register(window.document.currentScript.src);
+              if(r.active&&!navigator.serviceWorker.controller){
+                window.location.reload();
+              }else if(!r.active){
+                r.addEventListener("updatefound",()=>r.installing.addEventListener("statechange",
+                  (evt)=>{if(evt.target.state==="activated")window.location.reload();}));
+              }
+            })();
+          }
+          SWEOF
+
+          # Inject the service worker script into the HTML head
+          sed -i 's|</head>|<script src="coi-serviceworker.js"></script></head>|' exports/web/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: exports/web
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
