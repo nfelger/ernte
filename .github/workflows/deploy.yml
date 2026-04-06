@@ -33,13 +33,16 @@ jobs:
           mkdir -p "$HOME/.local/share/godot/export_templates/4.3.stable"
           cp /root/.local/share/godot/export_templates/4.3.stable/* \
              "$HOME/.local/share/godot/export_templates/4.3.stable/"
+          echo "HOME=$HOME"
+          echo "--- Templates copied ---"
+          ls -la "$HOME/.local/share/godot/export_templates/4.3.stable/" | grep -i web
 
       - name: Import project
         run: godot --headless --import 2>&1 || true
         timeout-minutes: 2
 
       - name: Export to Web
-        run: godot --headless --export-release "Web" exports/web/index.html
+        run: godot --headless --verbose --export-release "Web" exports/web/index.html 2>&1
         timeout-minutes: 5
 
       - name: Add cross-origin isolation headers
